@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
-    <ion-buttons *ngIf="isAuthenticated" end>
+    <ion-title>Home<span *ngIf="isAuthenticated()">: {{account?.firstName}}</span></ion-title>
+    <ion-buttons *ngIf="isAuthenticated()" end>
       <button ion-button icon-only (click)="logout()" color="royal">
         <ion-icon name="exit"></ion-icon>
       </button>
@@ -9,11 +9,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="!isAuthenticated">
-    <sentry-login></sentry-login>
-  </div>
-  <div *ngIf="isAuthenticated">
-    <sentry-dashboard></sentry-dashboard>
-  </div>
+<ion-content *ngIf="!isAuthenticated()" padding>
+  <sentry-login></sentry-login>
+</ion-content>
+<ion-content *ngIf="isAuthenticated()" class="card-background-page">
+  <sentry-dashboard></sentry-dashboard>
 </ion-content>

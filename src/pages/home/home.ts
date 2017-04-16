@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../app/login/login.service';
+import { AccountService } from '../../app/auth/account.service';
+import { Principal } from '../../app/auth/principal.service';
 import { NavController, LoadingController, Events } from 'ionic-angular';
 
 @Component({
@@ -7,9 +9,9 @@ import { NavController, LoadingController, Events } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit{
-  isAuthenticated: boolean = false;
+  account;
 
-  constructor(public navCtrl: NavController, private loginService: LoginService, private loadingController: LoadingController, private events: Events) {
+  constructor(public navCtrl: NavController, private principal: Principal, private accountService: AccountService, private loginService: LoginService, private loadingController: LoadingController, private events: Events) {
 
   }
 
@@ -19,13 +21,22 @@ export class HomePage implements OnInit{
 
   registerForAuthenticationSuccess() {
   	this.events.subscribe('authenticationSuccess', () => {
-  		this.isAuthenticated = true;
+      this.getAccount();
   	});
+  }
+
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+
+  getAccount() {
+    this.accountService.get().toPromise().then(account => {
+      this.account = account;
+    });
   }
 
   logout() {
   	this.loginService.logout();
-  	this.isAuthenticated = false;
   }
 
   

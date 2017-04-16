@@ -11,13 +11,10 @@ export class LoginService {
 			this.authServerProvider.login(credentials).subscribe((data) => {
 				this.principal.identity(true).then(account => {
 					resolve(data);
-					console.log(data);
-					console.log(account);
 				});
 			}, err => {
 				this.logout();
 				reject(err);
-				console.log(err);
 			});
 		});
 	}

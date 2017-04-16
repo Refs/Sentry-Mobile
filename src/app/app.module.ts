@@ -11,6 +11,7 @@ import { LoginService } from './login/login.service';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -19,6 +20,7 @@ import { AuthServerProvider } from './auth/auth-jwt.service';
 import { AccountService } from './auth/account.service';
 import { Principal } from './auth/principal.service';
 import { CSRFService } from './auth/csrf.service';
+import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { CSRFService } from './auth/csrf.service';
     AboutPage,
     ContactPage,
     HomePage,
+    ProfilePage,
     LoginComponent,
     DashboardComponent,
     TabsPage
@@ -41,6 +44,7 @@ import { CSRFService } from './auth/csrf.service';
     MyApp,
     AboutPage,
     ContactPage,
+    ProfilePage,
     HomePage,
     TabsPage
   ],
@@ -50,6 +54,8 @@ import { CSRFService } from './auth/csrf.service';
     AccountService,
     LoginService,
     CSRFService,
+    LocalStorageService,
+    SessionStorageService,
     Principal,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-list-header>{{account?.firstName}}</ion-list-header>
+		<ion-item>
+			<label>Login:</label>
+			<p>{{account?.login}}</p>
+			<label>First name:</label>
+			<p>{{account?.firstName}}</p>
+			<label>Last name:</label>
+			<p>{{account?.lastName}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>
