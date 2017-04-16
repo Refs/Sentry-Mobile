@@ -12,6 +12,7 @@ export class LoginService {
 				this.principal.identity(true).then(account => {
 					resolve(data);
 					console.log(data);
+					console.log(account);
 				});
 			}, err => {
 				this.logout();

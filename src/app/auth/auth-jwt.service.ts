@@ -20,9 +20,15 @@ export class AuthServerProvider {
 		return this.http.post(this.backEnd + 'api/authenticate', data).map(authenticateSuccess.bind(this));
 
 		function authenticateSuccess(res) {
-			let bearerToken = res.headers.get('Authorization');
-			if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
-				let jwt = bearerToken.slice(7, bearerToken.length);
+			let bearerToken = res._body;
+			console.log(res.headers.get('Authorization'));
+			console.log(res.headers.get('Connection'));
+			console.log(res.headers.get('Vary'));
+			console.log(res.headers.get('Access-Control-Allow-Origin'));
+			console.log(res._body.slice(19, res._body.length-4), "< TOKEN");
+			if (bearerToken) {
+				console.log("will store Token!!");
+				let jwt = bearerToken.slice(19, bearerToken.length-4);
 				this.storeAuthenticationToken(jwt, credentials.rememberMe);
 				return jwt; 
 			}
