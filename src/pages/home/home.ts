@@ -8,8 +8,9 @@ import { NavController, LoadingController, Events } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   account;
+  hasAccount: boolean = false;
 
   constructor(public navCtrl: NavController, 
               private principal: Principal, 
@@ -35,6 +36,7 @@ export class HomePage implements OnInit{
   getAccount() {
     this.accountService.get().toPromise().then(account => {
       this.account = account;
+      this.hasAccount = true;
     });
   }
 

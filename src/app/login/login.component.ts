@@ -25,11 +25,12 @@ export class LoginComponent implements OnInit {
 	  		duration: 1200
 	  	});
 	  	loader.present();
+
 	  	if(!this.credentials.rememberMe){
 	  		this.credentials.rememberMe = false;
 	  	}
-	  	this.loginService.login(this.credentials).then(() => {
 
+	  	this.loginService.login(this.credentials).then(() => {
 	  		this.isAuthenticated = true;
 	  		this.events.publish('authenticationSuccess');
 	  	}).catch(() => {
@@ -37,7 +38,6 @@ export class LoginComponent implements OnInit {
 				title: 'Invalid Credentials',
 				subTitle: 'Failed to sign in!<br> Check your credentials and try again.',
 				buttons: ['Ok']
-
 			});
 			alert.present();
 	  		this.isAuthenticated = false;
