@@ -1,8 +1,8 @@
-import { Http, RequestOptionsArgs } from '@angular/http'
+import { RequestOptions, Headers } from '@angular/http'
 import { LocalStorageService, SessionStorageService } from 'ng2-webstorage'
 
 export class HttpInterceptor {
-	options: RequestOptionsArgs;
+	options: RequestOptions;
 	localStorage: LocalStorageService;
 	sessionStorage: SessionStorageService;
 
@@ -11,9 +11,14 @@ export class HttpInterceptor {
 		this.sessionStorage = new SessionStorageService();
 	}
 
-	getHttpOptions(): RequestOptionsArgs {
+	getHttpOptions(): RequestOptions {
+		this.options = new RequestOptions({headers: new Headers()});
 		let token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
-		this.options.headers.append('Authorization', 'Bearer ' + token);
+
+		if( token ) {
+			this.options.headers.append('Authorization', 'Bearer ' + token);
+		}
+		
 		return this.options;
 	}
 }

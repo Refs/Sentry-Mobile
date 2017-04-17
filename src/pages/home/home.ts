@@ -11,9 +11,12 @@ import { NavController, LoadingController, Events } from 'ionic-angular';
 export class HomePage implements OnInit{
   account;
 
-  constructor(public navCtrl: NavController, private principal: Principal, private accountService: AccountService, private loginService: LoginService, private loadingController: LoadingController, private events: Events) {
-
-  }
+  constructor(public navCtrl: NavController, 
+              private principal: Principal, 
+              private accountService: AccountService, 
+              private loginService: LoginService, 
+              private loadingController: LoadingController, 
+              private events: Events) {}
 
   ngOnInit() {
   	this.registerForAuthenticationSuccess();
@@ -37,6 +40,7 @@ export class HomePage implements OnInit{
 
   logout() {
   	this.loginService.logout();
+    this.events.publish('logoutSuccess');
   }
 
   

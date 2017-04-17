@@ -40,13 +40,7 @@ export class LoginComponent implements OnInit {
 
 			});
 			alert.present();
-	  		console.log('Login ERROR');
 	  		this.isAuthenticated = false;
 	  	});
-	}
-
-	logout() {
-		this.loginService.logout();
-		this.isAuthenticated = false;
 	}
 }
