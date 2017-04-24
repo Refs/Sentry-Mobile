@@ -10,6 +10,10 @@ export class DashboardComponent implements OnInit {
 	constructor(private accountService: AccountService){}
 
 	ngOnInit() {
+		this.getAccount();
+	}
+
+	getAccount() {
 		this.accountService.get().toPromise().then(account => {
 			this.account = account;
 		});
