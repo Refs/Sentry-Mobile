@@ -3,6 +3,7 @@ import { LoginService } from '../../app/login/login.service';
 import { AccountService } from '../../app/auth/account.service';
 import { Principal } from '../../app/auth/principal.service';
 import { NavController, LoadingController, Events } from 'ionic-angular';
+import { SessionStorageService } from 'ng2-webstorage';
 
 @Component({
   selector: 'page-home',
@@ -17,7 +18,8 @@ export class HomePage implements OnInit {
               private accountService: AccountService, 
               private loginService: LoginService, 
               private loadingController: LoadingController, 
-              private events: Events) {}
+              private events: Events,
+              private sessionStorage:SessionStorageService) {}
 
   ngOnInit() {
   	this.registerForAuthenticationSuccess();
@@ -25,7 +27,13 @@ export class HomePage implements OnInit {
 
   registerForAuthenticationSuccess() {
   	this.events.subscribe('authenticationSuccess', () => {
-      this.getAccount();
+      // this.getAccount();
+      let account = this.sessionStorage.retrieve('account');
+      if(account) {
+        this.account = account;
+      } else {
+        this.getAccount();
+      }
   	});
   }
 

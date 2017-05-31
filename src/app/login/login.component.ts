@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
 
 	  	this.loginService.login(this.credentials).then(() => {
 	  		this.isAuthenticated = true;
+			let alert = this.alert.create({
+				title: 'Welcome',
+				subTitle: 'Check your duties now!',
+				buttons: ['Ok']
+			});
+			alert.present();
 	  		this.events.publish('authenticationSuccess');
 	  	}).catch(() => {
 	  		let alert = this.alert.create({

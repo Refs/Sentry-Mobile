@@ -6,7 +6,9 @@ import { AccountService } from '../auth/account.service';
 	templateUrl: 'dashboard.html'
 })
 export class DashboardComponent implements OnInit {
+	
 	account;
+
 	constructor(private accountService: AccountService){}
 
 	ngOnInit() {
@@ -17,5 +19,16 @@ export class DashboardComponent implements OnInit {
 		this.accountService.get().toPromise().then(account => {
 			this.account = account;
 		});
+	}
+
+	hasAuthority(authority) {
+		if(this.account){
+			for(var i = 0; i < this.account.authorities.length; i++) {
+				if(this.account.authorities[i] === authority) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

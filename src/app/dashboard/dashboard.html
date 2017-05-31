@@ -1,37 +1,31 @@
-
 <ion-content>
-	<ion-card style="margin-top:20%">
-		<ion-card-header>
-			<!-- Dash -->
-		</ion-card-header>
-		<ion-card-content>
-			<ion-icon name="person" item-left></ion-icon> Welcome, {{account?.firstName}}
-		</ion-card-content>
-	</ion-card>
-	<div class="card-background-page">
-		<ion-card>
-			<img src="../../assets/img/card-image.jpg"/>
-			<div class="card-title">Users</div>
-			<div class="card-subtitle">3 Users registered</div>
-		</ion-card>
+    <div class='sentry-header'>
+        <ion-icon name="person" item-left></ion-icon> Welcome, {{account?.firstName}}
+    </div>
 
-		<ion-card>
-			<img src="../../assets/img/card-image.jpg"/>
-			<div class="card-title">Expenses</div>
-			<div class="card-subtitle">5 Expenses registered</div>
-		</ion-card>
+    <div class="card-background-page">
+        <ion-card *ngIf="hasAuthority('ROLE_ADMIN')">
+            <!--<span></span>-->
+            <div class="card-title">Users</div>
+            <div class="card-subtitle">3 Users registered</div>
+        </ion-card>
 
-		<ion-card>
-			<img src="../../assets/img/card-image.jpg"/>
-			<div class="card-title">E-mails</div>
-			<div class="card-subtitle">3 Unread e-mails</div>
-		</ion-card>
+        <ion-card>
+            <!--<span></span>-->
+            <div class="card-title">Expenses</div>
+            <div class="card-subtitle">5 Expenses registered</div>
+        </ion-card>
 
-		<ion-card>
-			<img src="../../assets/img/card-image.jpg"/>
-			<div class="card-title">Scheduling</div>
-			<div class="card-subtitle">4 Schedulings</div>
-		</ion-card>
-	</div>
+        <ion-card>
+            <span></span>
+            <div class="card-title">E-mails</div>
+            <div class="card-subtitle">3 Unread e-mails</div>
+        </ion-card>
+
+        <ion-card>
+            <span></span>
+            <div class="card-title">Scheduling</div>
+            <div class="card-subtitle">4 Schedulings</div>
+        </ion-card>
+    </div>
 </ion-content>
-

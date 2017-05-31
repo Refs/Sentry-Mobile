@@ -1,0 +1,14 @@
+sentry-login {
+    .sentry-login-title {
+        color: black;
+        font-size: 24px;
+        text-align: center;
+        font-weight: 400;
+        font-family: cursive;
+    }
+    ion-input {
+        .ng-invalid {
+            // border-bottom: 1px solid red;
+        }
+    }
+}

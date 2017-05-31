@@ -1,18 +1,18 @@
 <ion-list>
-  <ion-title>Sign in to Sentry</ion-title>
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="credentials.username" #username="ngModel"></ion-input>
-  </ion-item>
+    <span class='sentry-login-title'>Sign in to Sentry</span>
+    <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="credentials.username" #username="ngModel" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="credentials.password" #password="ngModel"></ion-input>
-  </ion-item>
+    <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="credentials.password" #password="ngModel" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>Remember me</ion-label>
-    <ion-checkbox color="dark" checked="true" [(ngModel)]="credentials.rememberMe" #rememberMe="ngModel"></ion-checkbox>
-  </ion-item>
+    <ion-item>
+        <ion-label>Remember me</ion-label>
+        <ion-checkbox color="dark" checked="true" [(ngModel)]="credentials.rememberMe" #rememberMe="ngModel"></ion-checkbox>
+    </ion-item>
 </ion-list>
 <button ion-button block (click)="login()">Login</button>

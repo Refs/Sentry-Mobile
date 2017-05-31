@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../app/auth/account.service';
 import { Principal } from '../../app/auth/principal.service';
 import { NavController, Events } from 'ionic-angular';
+import { SessionStorageService } from 'ng2-webstorage';
 
 @Component({
   selector: 'page-profile',
@@ -10,12 +11,18 @@ import { NavController, Events } from 'ionic-angular';
 export class ProfilePage implements OnInit{
   account;
 
-  constructor(public navCtrl: NavController, private principal: Principal, private accountService: AccountService, private events: Events) {
+  constructor(public navCtrl: NavController, private sessionStorage: SessionStorageService, private principal: Principal, private accountService: AccountService, private events: Events) {
 
   }
 
   ngOnInit() {
-    this.getAccount();
+      let account = this.sessionStorage.retrieve('account');
+      if(account) {
+        this.account = account;
+      } else {
+        this.getAccount();
+      }
+    // this.getAccount();
   }
 
   isAuthenticated() {

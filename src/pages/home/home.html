@@ -1,18 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title *ngIf="!isAuthenticated()">Home</ion-title>
-    <ion-title *ngIf="isAuthenticated()">Dashboard</ion-title>
-    <ion-buttons *ngIf="isAuthenticated()" end>
-      <button ion-button icon-only (click)="logout()" color="royal">
+    <ion-navbar>
+        <ion-title *ngIf="!isAuthenticated()">Home</ion-title>
+        <ion-title *ngIf="isAuthenticated()">Dashboard</ion-title>
+        <ion-buttons *ngIf="isAuthenticated()" end>
+            <button ion-button icon-only (click)="logout()" color="royal">
         <ion-icon name="exit"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content *ngIf="!isAuthenticated()" padding>
-  <sentry-login></sentry-login>
+    <sentry-login></sentry-login>
+    <ion-list>
+        <ion-item>
+            <p>Here you can be aware and never <br>forget your duties</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
 
 <sentry-dashboard *ngIf="isAuthenticated()"></sentry-dashboard>
-
